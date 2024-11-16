@@ -1,0 +1,21 @@
+- name: Cleanup Microservices
+  hosts: localhost
+  vars_files:
+    - ../vars/config.yml
+  tasks:
+    - name: Delete service1
+      kubernetes.core.k8s:
+        state: absent
+        definition: "{{ service1_manifest | from_yaml }}"
+
+    - name: Delete service2
+      kubernetes.core.k8s:
+        state: absent
+        definition: "{{ service2_manifest | from_yaml }}"
+
+    - name: Delete namespace
+      kubernetes.core.k8s:
+        api_version: v1
+        kind: Namespace
+        name: "{{ k8s_namespace }}"
+        state: absent

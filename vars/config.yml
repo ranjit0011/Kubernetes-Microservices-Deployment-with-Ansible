@@ -1,0 +1,3 @@
+k8s_namespace: "microservices"
+service1_manifest: "{{ playbook_dir }}/manifest/service1.yml"
+service2_manifest: "{{ playbook_dir }}/manifest/service1.yml"
